@@ -1,1 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xat Space - xDann</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <div class="xat-space-container" onclick="activarMusicaFondo()">
+
+        <div class="xat-single-star"></div>
+
+        <div class="xat-center-block">
+            <h1 class="xat-name-shimmer">xDann</h1>
+            <div class="xat-divider">
+                <div class="xat-diamond"></div>
+            </div>
+        </div>
+
+        <div class="xat-player-container">
+            <button class="xat-play-btn" onclick="controlarAudio(event)" title="Reproducir / Pausar">
+                <div class="xat-icon-shape xat-state-play" id="xat-icon"></div>
+            </button>
+            <div class="xat-song-info">
+                <span class="xat-song-title">BIRDS OF A FEATHER</span>
+                <span class="xat-song-artist">Billie Eilish</span>
+            </div>
+        </div>
+
+        <audio id="xat-bg-audio" loop>
+            <source src="cancion.mp3" type="audio/mpeg">
+            Tu navegador no soporta este elemento de audio.
+        </audio>
+
+    </div>
+
+    <script>
+        const miAudio = document.getElementById('xat-bg-audio');
+        const miIcono = document.getElementById('xat-icon');
+        let musicaIniciada = false;
+
+        function activarMusicaFondo() {
+            if (!musicaIniciada) {
+                miAudio.play().then(() => {
+                    miIcono.className = "xat-icon-shape xat-state-pause";
+                    musicaIniciada = true;
+                }).catch(error => {
+                    console.log("Esperando interacción para activar audio.");
+                });
+            }
+        }
+
+        function controlarAudio(event) {
+            event.stopPropagation();
+            if (miAudio.paused) {
+                miAudio.play().then(() => {
+                    miIcono.className = "xat-icon-shape xat-state-pause";
+                    musicaIniciada = true;
+                });
+            } else {
+                miAudio.pause();
+                miIcono.className = "xat-icon-shape xat-state-play";
+            }
+        }
+    </script>
+
+</body>
+</html>
