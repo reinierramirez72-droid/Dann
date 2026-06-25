@@ -8,7 +8,7 @@ body, html {
     font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-/* CONTENEDOR PRINCIPAL: DEGRADADO ARCOÍRIS ANIMADO EN MOVIMIENTO */
+/* CONTENEDOR PRINCIPAL: ARCOÍRIS FEMENINO PASTEL EN MOVIMIENTO SUAVE */
 .xat-space-container {
     position: fixed;
     top: 0;
@@ -16,16 +16,15 @@ body, html {
     width: 100%;
     height: 100%;
     
-    /* Los 6 colores oficiales de la bandera del Orgullo */
+    /* Degradado basado en la bandera del orgullo lésbico/femenino en tonos pasteles suavizados */
     background: linear-gradient(135deg, 
-        #E40303 0%, 
-        #FF8C00 20%, 
-        #FFED00 40%, 
-        #008026 60%, 
-        #004CFF 80%, 
-        #732982 100%
+        #f1a784 0%, 
+        #f7cbb5 25%, 
+        #ffffff 50%, 
+        #e3a3ca 75%, 
+        #b175a3 100__%
     );
-    background-size: 400% 400%; /* Tamaño extra grande para permitir el movimiento */
+    background-size: 300% 300%;
     
     display: flex;
     flex-direction: column;
@@ -34,15 +33,15 @@ body, html {
     overflow: hidden;
     z-index: 1;
     
-    /* Animaciones combinadas: Aparición suave al cargar + Movimiento del arcoíris */
+    /* Transición de entrada + movimiento suave del fondo */
     animation: 
-        xatFadeInSpace 2s ease-out forwards, 
-        xatRainbowMotion 12s ease infinite;
+        xatFadeInSpace 2.5s ease-out forwards, 
+        xatPastelMotion 16s ease-in-out infinite;
     opacity: 0;
 }
 
-/* Animación para que el arcoíris se mueva fluidamente de fondo */
-@keyframes xatRainbowMotion {
+/* Movimiento lento y delicado del arcoíris pastel */
+@keyframes xatPastelMotion {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
@@ -53,38 +52,55 @@ body, html {
     100% { opacity: 1; }
 }
 
+/* EFECTO FEMENINO EXTRA: Destellos mágicos difuminados en el fondo */
+.xat-magic-dust {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(rgba(255, 255, 255, 0.6) 1.5px, transparent 20px),
+        radial-gradient(rgba(227, 163, 202, 0.4) 2px, transparent 30px);
+    background-size: 150px 150px, 250px 250px;
+    background-position: 0 0, 50px 50px;
+    opacity: 0.5;
+    z-index: 2;
+    pointer-events: none;
+}
+
 /* BLOQUE CENTRAL */
 .xat-center-block {
     position: relative;
     z-index: 20;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
-/* "XDANN" CON EFECTO DE LUZ SHIMMER METÁLICA */
-.xat-name-shimmer {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 8.5rem;
-    font-weight: bold;
+/* "DANN" EN LETRA CURSIVA CON NEÓN Y SHIMMER */
+.xat-name-cursive {
+    font-family: 'Great Vibes', cursive;
+    font-size: 11rem; /* Al ser cursiva fina se incrementa el tamaño para que luzca imponente */
+    font-weight: 500;
     margin: 0;
     text-align: center;
     user-select: none;
-    line-height: 0.9;
-    letter-spacing: -1px;
-
-    /* Base blanca pura brillante */
+    line-height: 0.8;
+    
+    /* Base blanca radiante */
     color: #ffffff; 
     
-    /* Máscara de degradado para el reflejo cromado que pasa de izq a der */
-    background: linear-gradient(to right, #ffffff 0%, #ffffff 40%, #e0e0e0 50%, #ffffff 60%, #ffffff 100%);
+    /* Máscara de brillo metálico que pasa de izquierda a derecha */
+    background: linear-gradient(to right, #ffffff 0%, #ffffff 35%, #ffe6f2 50%, #ffffff 65%, #ffffff 100%);
     background-size: 200% auto;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     
-    animation: xatGlowStreak 3.5s linear infinite;
+    animation: xatGlowStreak 4s linear infinite;
     
-    /* Sombra refinada para resaltar sobre los colores del fondo */
-    filter: drop-shadow(2px 3px 6px rgba(0, 0, 0, 0.4));
+    /* Efecto Neón Afeminado: Varias capas de sombras rosa pastel y magenta sutil */
+    filter: 
+        drop-shadow(0 0 8px rgba(227, 163, 202, 0.8)) 
+        drop-shadow(0 0 20px rgba(177, 117, 163, 0.5))
+        drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.15));
 }
 
 @keyframes xatGlowStreak {
@@ -92,44 +108,55 @@ body, html {
     100% { background-position: -200% center; }
 }
 
-/* DIVISOR BLANCO ELEGANTE */
+/* DIVISOR COQUETO CON CORAZÓN */
 .xat-divider {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 8px;
-    opacity: 0.9;
+    margin-top: 5px;
+    opacity: 0.8;
 }
 
 .xat-divider::before, .xat-divider::after {
     content: "";
-    width: 95px;
-    height: 1.5px;
+    width: 80px;
+    height: 1px;
     background: linear-gradient(to right, transparent, #ffffff 50%, transparent);
 }
 
-.xat-diamond {
+.xat-heart {
     width: 6px;
     height: 6px;
     background-color: #ffffff;
+    position: relative;
     transform: rotate(45deg);
-    margin: 0 15px;
-    box-shadow: 0 0 8px #ffffff;
+    margin: 0 12px;
+    box-shadow: 0 0 6px rgba(227, 163, 202, 1);
 }
+.xat-heart::before, .xat-heart::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+}
+.xat-heart::before { top: -3px; left: 0; }
+.xat-heart::after { top: 0; left: -3px; }
 
-/* REPRODUCTOR ESTILO OBSCURÓ CRISTAL (Para contrastar genial con el arcoíris) */
+/* REPRODUCTOR CRISTAL BLANCO ULTRA LIMPIO */
 .xat-player-container {
     position: absolute;
     bottom: 60px;
     display: flex;
     align-items: center;
-    background: rgba(0, 0, 0, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 10px 28px 10px 12px;
-    border-radius: 14px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 10px 26px 10px 12px;
+    border-radius: 20px; /* Bordes más redondeados y suaves */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 8px 24px rgba(177, 117, 163, 0.2);
     z-index: 100;
 }
 
@@ -137,14 +164,14 @@ body, html {
 .xat-play-btn {
     background: #ffffff;
     border: none;
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
     outline: none;
 }
 
@@ -153,67 +180,68 @@ body, html {
     width: 0; height: 0;
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
-    border-left: 9px solid #333333;
+    border-left: 9px solid #b175a3;
     margin-left: 2px;
 }
 .xat-state-pause { display: flex; gap: 3px; }
 .xat-state-pause::before, .xat-state-pause::after {
-    content: ""; width: 3px; height: 10px; background-color: #333333;
+    content: ""; width: 2.5px; height: 10px; background-color: #b175a3;
 }
 
 /* TEXTOS DEL REPRODUCTOR */
 .xat-song-info {
     display: flex;
     flex-direction: column;
-    margin-left: 16px;
+    margin-left: 14px;
     user-select: none;
 }
 
 .xat-song-title {
-    color: #ffffff;
+    color: #4a3b45; /* Tono oscuro sutil para que sea legible sobre el cristal claro */
     font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.3px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
 }
 
 .xat-song-artist {
-    color: rgba(255, 255, 255, 0.8);
+    color: #b175a3;
     font-size: 0.75rem;
-    margin-top: 2px;
+    margin-top: 1px;
+    font-weight: 500;
 }
 
-/* UNA ÚNICA ESTRELLA EN ÓRBITA LIMPIA */
+/* UNA ÚNICA ESTRELLA EN ÓRBITA SUAVE ROSA/BLANCA */
 .xat-single-star {
     position: absolute;
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     background: #ffffff;
     border-radius: 50%;
-    box-shadow: 0 0 15px 4px #ffffff;
+    box-shadow: 0 0 12px 3px #ffffff, 0 0 8px #e3a3ca;
     z-index: 5;
     opacity: 0;
-    animation: xatSingleStarPass 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation: xatSingleStarPass 8s cubic-bezier(0.25, 1, 0.5, 1) infinite;
 }
 
 @keyframes xatSingleStarPass {
     0% {
-        top: 20%;
+        top: 25%;
         left: -10%;
         opacity: 0;
         transform: scale(0.6);
     }
     15% {
-        opacity: 1;
-        transform: scale(1.3);
+        opacity: 0.9;
+        transform: scale(1.2);
     }
     45% {
-        top: 50%;
+        top: 45%;
         left: 110%;
         opacity: 0;
-        transform: scale(0.5);
+        transform: scale(0.6);
     }
     100% {
-        top: 20%;
+        top: 25%;
         left: -10%;
         opacity: 0;
     }
