@@ -8,7 +8,7 @@ body, html {
     font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-/* CONTENEDOR PRINCIPAL: EFECTO BANDERA ONDEANTE CON DEGRADADO CROMO Y NEGRO */
+/* CONTENEDOR PRINCIPAL: BANDERA ARCOÍRIS EN TONOS PASTEL AFEMINADOS CON MOVIMIENTO ONDEANTE */
 .xat-space-container {
     position: fixed;
     top: 0;
@@ -16,14 +16,17 @@ body, html {
     width: 100%;
     height: 100%;
     
+    /* Los 6 colores de la bandera tradicional transformados a una paleta pastel muy dulce */
     background: linear-gradient(135deg, 
-        #050505 0%,   
-        #1c1d1f 25%,  
-        #4b4d52 50%,  
-        #1c1d1f 75%,  
-        #050505 100%  
+        #ffb3ba 0%,  /* Rosa Pastel */
+        #ffdfba 20%, /* Coral/Naranja Suave */
+        #ffffba 40%, /* Amarillo Pastel */
+        #baffc9 60%, /* Verde Menta/Agua */
+        #bae1ff 80%, /* Celeste Cielo */
+        #e8baff 100% /* Lavanda/Violeta Suave */
     );
-    background-size: 400% 400%; 
+    background-size: 300% 300%; /* Tamaño necesario para permitir el desplazamiento fluido */
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,13 +34,15 @@ body, html {
     overflow: hidden;
     z-index: 1;
     
+    /* Animación de entrada + efecto bandera ondeando en bucle */
     animation: 
-        xatFadeInSpace 2.5s ease-out forwards,
-        xatChromeWave 14s ease-in-out infinite;
+        xatFadeInSpace 2.5s ease-out forwards, 
+        xatPridePastelWave 10s ease-in-out infinite;
     opacity: 0;
 }
 
-@keyframes xatChromeWave {
+/* Animación que simula el movimiento suave y ondeante de una bandera de seda */
+@keyframes xatPridePastelWave {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
@@ -48,116 +53,45 @@ body, html {
     100% { opacity: 1; }
 }
 
-/* CAPA DEL EFECTO RECOMENDADO: LUZ SEGUIDORA DEL RATÓN */
-.xat-mouse-glow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 2;
-    transition: background 0.1s ease;
-}
-
-/* SOLUCIÓN: CAPA DE ESTRELLAS FIJAS CORREGIDA CON MÁXIMO CONTRASTE */
-.xat-space-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 3; /* Se posiciona justo detrás del humo */
-    
-    /* Generación de tres capas de estrellas de platino con tamaños y posiciones fijas */
-    background-image: 
-        radial-gradient(#ffffff 1.5px, transparent 1.5px),
-        radial-gradient(rgba(255, 255, 255, 0.7) 2px, transparent 2px),
-        radial-gradient(rgba(200, 205, 215, 0.5) 1px, transparent 1px);
-    background-size: 180px 180px, 290px 290px, 390px 390px;
-    background-position: 0 0, 40px 80px, 120px 200px;
-    
-    /* Animación de titileo galáctico continuo */
-    animation: xatGlowStarsGalactic 4s ease-in-out infinite alternate;
-}
-
-@keyframes xatGlowStarsGalactic {
-    0% { opacity: 0.3; }
-    100% { opacity: 0.95; }
-}
-
-/* EFECTO DE HUMO INTENSO EN CAPAS MULTIDIRECCIONALES */
-.xat-smoke-layer {
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    pointer-events: none;
-    opacity: 0.12; 
-    z-index: 4; /* Sobre las estrellas para simular el relieve místico */
-}
-
-.xat-smoke-1 {
-    background: radial-gradient(circle at 30% 40%, #9ca3af 0%, transparent 45%),
-                radial-gradient(circle at 70% 60%, #e5e7eb 0%, transparent 40%);
-    animation: xatSmokeMove1 24s linear infinite alternate;
-}
-.xat-smoke-2 {
-    background: radial-gradient(circle at 50% 30%, #6b7280 0%, transparent 50%),
-                radial-gradient(circle at 20% 70%, #9ca3af 0%, transparent 45%);
-    animation: xatSmokeMove2 30s linear infinite alternate;
-}
-.xat-smoke-3 {
-    background: radial-gradient(circle at 50% 50%, #ffffff 0%, transparent 30%);
-    opacity: 0.15;
-    animation: xatSmokeMove3 14s ease-in-out infinite alternate;
-}
-
-@keyframes xatSmokeMove1 {
-    0% { transform: translate(-5%, -5%) rotate(0deg) scale(1); }
-    100% { transform: translate(5%, 5%) rotate(8deg) scale(1.15); }
-}
-@keyframes xatSmokeMove2 {
-    0% { transform: translate(5%, -3%) rotate(0deg) scale(1.15); }
-    100% { transform: translate(-5%, 5%) rotate(-6deg) scale(1); }
-}
-@keyframes xatSmokeMove3 {
-    0% { transform: scale(0.9); opacity: 0.08; }
-    100% { transform: scale(1.2); opacity: 0.18; }
-}
-
 /* BLOQUE CENTRAL */
 .xat-center-block {
     position: relative;
     z-index: 20;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     text-align: center;
 }
 
-/* Ʀɛɨ EN CURSIVA ULTRA ELEGANTE */
-.xat-name-rei-shimmer {
-    font-family: 'Monsieur La Doulaise', cursive, serif;
+/* "DANN" EN LETRA CURSIVA CORREGIDA (SIN CORTES) Y EN SINTONÍA CON EL FONDO */
+.xat-name-cursive {
+    font-family: 'Great Vibes', cursive;
     font-size: 11rem;
     font-weight: 500;
     margin: 0;
     text-align: center;
     user-select: none;
-    line-height: 1.2;
-    padding: 10px 30px;
-    display: block;
-    letter-spacing: 1px;
-    color: #d1d5db; 
     
-    background: linear-gradient(to right, #9ca3af 0%, #d1d5db 40%, #ffffff 50%, #d1d5db 60%, #9ca3af 100%);
+    /* Corrección del corte: añadimos margen superior e interno para que la "D" respire */
+    line-height: 1.2;
+    padding: 15px 30px;
+    display: block;
+    
+    /* Color base en sintonía con la paleta pastel (Lavanda tierno) */
+    color: #dfb1d9; 
+    
+    /* Reflejo metálico brillante continuo adaptado a la gama */
+    background: linear-gradient(to right, #dfb1d9 0%, #dfb1d9 35%, #ffffff 50%, #dfb1d9 65%, #dfb1d9 100%);
     background-size: 200% auto;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: xatGlowStreak 3.8s linear infinite;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.15)) drop-shadow(3px 4px 6px rgba(0, 0, 0, 0.85));
+    
+    animation: xatGlowStreak 4s linear infinite;
+    
+    /* El neón magenta/lavanda suave integrado armónicamente */
+    filter: 
+        drop-shadow(0 0 12px rgba(232, 186, 255, 0.9)) 
+        drop-shadow(0 0 25px rgba(255, 179, 186, 0.5))
+        drop-shadow(2px 3px 5px rgba(0, 0, 0, 0.08));
 }
 
 @keyframes xatGlowStreak {
@@ -165,70 +99,141 @@ body, html {
     100% { background-position: -200% center; }
 }
 
-/* DIVISOR DE PLATINO BRUÑIDO */
+/* DIVISOR COQUETO CON CORAZÓN */
 .xat-divider {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -10px;
-    opacity: 0.75;
-}
-.xat-divider::before, .xat-divider::after {
-    content: ""; width: 110px; height: 1.5px;
-    background: linear-gradient(to right, transparent, #e5e7eb 50%, transparent);
-}
-.xat-diamond {
-    width: 6px; height: 6px; background-color: #e5e7eb;
-    transform: rotate(45deg); margin: 0 15px; box-shadow: 0 0 8px #ffffff;
+    margin-top: -10px; /* Ajuste para compensar el padding superior */
+    opacity: 0.85;
 }
 
-/* REPRODUCTOR ESTILO CRISTAL OSCURO SINTONIZADO */
+.xat-divider::before, .xat-divider::after {
+    content: "";
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #ffffff 50%, transparent);
+}
+
+.xat-heart {
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+    position: relative;
+    transform: rotate(45deg);
+    margin: 0 12px;
+    box-shadow: 0 0 6px rgba(255, 179, 186, 1);
+}
+.xat-heart::before, .xat-heart::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+}
+.xat-heart::before { top: -3px; left: 0; }
+.xat-heart::after { top: 0; left: -3px; }
+
+/* REPRODUCTOR CRISTAL BLANCO TRANSLÚCIDO COMO EL DE TU CAPTURA */
 .xat-player-container {
     position: absolute;
     bottom: 60px;
     display: flex;
     align-items: center;
-    background: rgba(17, 18, 18, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 10px 28px 10px 12px;
-    border-radius: 14px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    padding: 10px 26px 10px 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
     z-index: 100;
 }
 
+/* BOTÓN DE CONTROL */
 .xat-play-btn {
-    background: #f3f4f6; border: none; width: 38px; height: 38px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; cursor: pointer;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); outline: none;
+    background: #ffffff;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    outline: none;
 }
+
 .xat-icon-shape { transition: all 0.1s ease; }
 .xat-state-play {
-    width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent;
-    border-left: 9px solid #111212; margin-left: 2px;
+    width: 0; height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 9px solid #b175a3;
+    margin-left: 2px;
 }
 .xat-state-pause { display: flex; gap: 3px; }
 .xat-state-pause::before, .xat-state-pause::after {
-    content: ""; width: 3px; height: 10px; background-color: #111212;
+    content: ""; width: 2.5px; height: 10px; background-color: #b175a3;
 }
 
-.xat-song-info { display: flex; flex-direction: column; margin-left: 16px; user-select: none; }
-.xat-song-title { color: #ffffff; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.3px; }
-.xat-song-artist { color: rgba(243, 244, 246, 0.65); font-size: 0.75rem; margin-top: 2px; }
+/* TEXTOS DEL REPRODUCTOR */
+.xat-song-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 14px;
+    user-select: none;
+}
 
-/* ESTRELLA DE PLATINO MAJESTUOSA: LENTA Y EXTRA BRILLANTE */
+.xat-song-title {
+    color: #4f3b4c;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+
+.xat-song-artist {
+    color: #a66898;
+    font-size: 0.75rem;
+    margin-top: 1px;
+    font-weight: 500;
+}
+
+/* UNA ÚNICA ESTRELLA EN ÓRBITA LIMPIA */
 .xat-single-star {
     position: absolute;
-    width: 8px; height: 8px; background: #ffffff; border-radius: 50%;
-    box-shadow: 0 0 25px 6px #ffffff, 0 0 12px 2px rgba(255, 255, 255, 0.8), 0 0 4px #9ca3af;
-    z-index: 5; opacity: 0;
-    animation: xatSingleStarPass 11s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+    width: 5px;
+    height: 5px;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 12px 3px #ffffff, 0 0 6px #ffb3ba;
+    z-index: 5;
+    opacity: 0;
+    animation: xatSingleStarPass 8s cubic-bezier(0.25, 1, 0.5, 1) infinite;
 }
 
 @keyframes xatSingleStarPass {
-    0% { top: 25%; left: -15%; opacity: 0; transform: scale(0.6); }
-    12% { opacity: 1; transform: scale(1.4); }
-    45% { top: 55%; left: 115%; opacity: 0; transform: scale(0.5); }
-    100% { top: 25%; left: -15%; opacity: 0; }
+    0% {
+        top: 25%;
+        left: -10%;
+        opacity: 0;
+        transform: scale(0.6);
+    }
+    15% {
+        opacity: 0.9;
+        transform: scale(1.2);
+    }
+    45% {
+        top: 45%;
+        left: 110%;
+        opacity: 0;
+        transform: scale(0.6);
+    }
+    100% {
+        top: 25%;
+        left: -10%;
+        opacity: 0;
+    }
 }
