@@ -8,15 +8,22 @@ body, html {
     font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-/* CONTENEDOR PRINCIPAL: TRIPLE GRADIENTE ENTRE GRISES Y NEGRO */
+/* CONTENEDOR PRINCIPAL: EFECTO BANDERA ONDEANTE CON DEGRADADO CROMO Y NEGRO */
 .xat-space-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* Añadido un gris intermedio (#1c1d1f) para dar mucha más profundidad */
-    background: radial-gradient(circle at center, #37383b 0%, #1c1d1f 55%, #050505 100%);
+    
+    background: linear-gradient(135deg, 
+        #050505 0%,   
+        #1c1d1f 25%,  
+        #4b4d52 50%,  
+        #1c1d1f 75%,  
+        #050505 100%  
+    );
+    background-size: 400% 400%; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,13 +31,58 @@ body, html {
     overflow: hidden;
     z-index: 1;
     
-    animation: xatFadeInSpace 2.5s ease-out forwards;
+    animation: 
+        xatFadeInSpace 2.5s ease-out forwards,
+        xatChromeWave 14s ease-in-out infinite;
     opacity: 0;
+}
+
+@keyframes xatChromeWave {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 @keyframes xatFadeInSpace {
     0% { opacity: 0; }
     100% { opacity: 1; }
+}
+
+/* CAPA DEL EFECTO RECOMENDADO: LUZ SEGUIDORA DEL RATÓN */
+.xat-mouse-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    transition: background 0.1s ease;
+}
+
+/* NUEVA CAPA: CAMPO DE ESTRELLAS DE PLATINO GALÁCTICAS CON TITILEO ELEGANTE */
+.xat-space-container::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* Polvo cósmico fino en tonos blanco frío y gris plata metálico */
+    background-image: 
+        radial-gradient(#ffffff 1px, transparent 15px),
+        radial-gradient(rgba(229, 231, 235, 0.4) 1.5px, transparent 25px),
+        radial-gradient(rgba(156, 163, 175, 0.3) 1px, transparent 35px);
+    background-size: 250px 250px, 380px 380px, 500px 500px;
+    background-position: 0 0, 70px 110px, 150px 300px;
+    z-index: 3; /* Detrás del humo para que se mimetice con el paisaje */
+    pointer-events: none;
+    
+    /* Animación de titileo suave y pausado */
+    animation: xatGlowStarsGalactic 5s ease-in-out infinite alternate;
+}
+
+@keyframes xatGlowStarsGalactic {
+    0% { opacity: 0.4; }
+    100% { opacity: 0.8; }
 }
 
 /* EFECTO DE HUMO INTENSO EN CAPAS MULTIDIRECCIONALES */
@@ -41,29 +93,23 @@ body, html {
     top: -50%;
     left: -50%;
     pointer-events: none;
-    /* Subimos la opacidad general para que el humo sea mucho más notorio */
     opacity: 0.12; 
-    z-index: 2;
+    z-index: 4; /* Sobre las estrellas para dar profundidad real */
 }
 
-/* Capa 1: Humo denso flotando hacia la derecha */
 .xat-smoke-1 {
     background: radial-gradient(circle at 30% 40%, #9ca3af 0%, transparent 45%),
                 radial-gradient(circle at 70% 60%, #e5e7eb 0%, transparent 40%);
     animation: xatSmokeMove1 24s linear infinite alternate;
 }
-
-/* Capa 2: Neblina baja cruzada */
 .xat-smoke-2 {
     background: radial-gradient(circle at 50% 30%, #6b7280 0%, transparent 50%),
                 radial-gradient(circle at 20% 70%, #9ca3af 0%, transparent 45%);
     animation: xatSmokeMove2 30s linear infinite alternate;
 }
-
-/* Capa 3: Aura detrás de la tipografía */
 .xat-smoke-3 {
     background: radial-gradient(circle at 50% 50%, #ffffff 0%, transparent 30%);
-    opacity: 0.15; /* Mayor enfoque en el centro */
+    opacity: 0.15;
     animation: xatSmokeMove3 14s ease-in-out infinite alternate;
 }
 
@@ -88,34 +134,26 @@ body, html {
     text-align: center;
 }
 
-/* Ʀɛɨ EN CURSIVA ULTRA ELEGANTE (Ajustado para evitar cortes de glifos) */
+/* Ʀɛɨ EN CURSIVA ULTRA ELEGANTE */
 .xat-name-rei-shimmer {
     font-family: 'Monsieur La Doulaise', cursive, serif;
-    font-size: 11rem; /* Al ser cursiva fina e hilada, se sube el tamaño para máxima legibilidad */
+    font-size: 11rem;
     font-weight: 500;
     margin: 0;
     text-align: center;
     user-select: none;
-    
-    /* Evitamos cortes en las curvas agregando padding y ajustando la línea de altura */
     line-height: 1.2;
     padding: 10px 30px;
     display: block;
     letter-spacing: 1px;
-
-    /* Base plateada pulida */
     color: #d1d5db; 
     
-    /* Máscara de degradado metálico shimmer */
     background: linear-gradient(to right, #9ca3af 0%, #d1d5db 40%, #ffffff 50%, #d1d5db 60%, #9ca3af 100%);
     background-size: 200% auto;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
     animation: xatGlowStreak 3.8s linear infinite;
-    
-    /* Sombra de alto contraste para despegar los trazos finos de la cursiva del humo */
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.15)) drop-shadow(3px 4px 6px rgba(0, 0, 0, 0.85));
 }
 
@@ -129,24 +167,16 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -10px; /* Compensa la altura del padding inferior */
+    margin-top: -10px;
     opacity: 0.75;
 }
-
 .xat-divider::before, .xat-divider::after {
-    content: "";
-    width: 110px;
-    height: 1.5px;
+    content: ""; width: 110px; height: 1.5px;
     background: linear-gradient(to right, transparent, #e5e7eb 50%, transparent);
 }
-
 .xat-diamond {
-    width: 6px;
-    height: 6px;
-    background-color: #e5e7eb;
-    transform: rotate(45deg);
-    margin: 0 15px;
-    box-shadow: 0 0 8px #ffffff;
+    width: 6px; height: 6px; background-color: #e5e7eb;
+    transform: rotate(45deg); margin: 0 15px; box-shadow: 0 0 8px #ffffff;
 }
 
 /* REPRODUCTOR ESTILO CRISTAL OSCURO SINTONIZADO */
@@ -165,91 +195,37 @@ body, html {
     z-index: 100;
 }
 
-/* BOTÓN DE CONTROL BLANCO METÁLICO */
 .xat-play-btn {
-    background: #f3f4f6;
-    border: none;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
-    outline: none;
+    background: #f3f4f6; border: none; width: 38px; height: 38px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); outline: none;
 }
-
 .xat-icon-shape { transition: all 0.1s ease; }
 .xat-state-play {
-    width: 0; height: 0;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-left: 9px solid #111212;
-    margin-left: 2px;
+    width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent;
+    border-left: 9px solid #111212; margin-left: 2px;
 }
 .xat-state-pause { display: flex; gap: 3px; }
 .xat-state-pause::before, .xat-state-pause::after {
     content: ""; width: 3px; height: 10px; background-color: #111212;
 }
 
-/* TEXTOS DEL REPRODUCTOR */
-.xat-song-info {
-    display: flex;
-    flex-direction: column;
-    margin-left: 16px;
-    user-select: none;
-}
+.xat-song-info { display: flex; flex-direction: column; margin-left: 16px; user-select: none; }
+.xat-song-title { color: #ffffff; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.3px; }
+.xat-song-artist { color: rgba(243, 244, 246, 0.65); font-size: 0.75rem; margin-top: 2px; }
 
-.xat-song-title {
-    color: #ffffff;
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.3px;
-}
-
-.xat-song-artist {
-    color: rgba(243, 244, 246, 0.65);
-    font-size: 0.75rem;
-    margin-top: 2px;
-}
-
-/* ESTRELLA DE PLATINO: LENTA Y EXTRA BRILLANTE */
+/* ESTRELLA DE PLATINO MAJESTUOSA: LENTA Y EXTRA BRILLANTE */
 .xat-single-star {
     position: absolute;
-    width: 8px;
-    height: 8px;
-    background: #ffffff;
-    border-radius: 50%;
-    box-shadow: 
-        0 0 25px 6px #ffffff, 
-        0 0 12px 2px rgba(255, 255, 255, 0.8),
-        0 0 4px #9ca3af;
-    z-index: 5;
-    opacity: 0;
+    width: 8px; height: 8px; background: #ffffff; border-radius: 50%;
+    box-shadow: 0 0 25px 6px #ffffff, 0 0 12px 2px rgba(255, 255, 255, 0.8), 0 0 4px #9ca3af;
+    z-index: 5; opacity: 0;
     animation: xatSingleStarPass 11s cubic-bezier(0.25, 1, 0.5, 1) infinite;
 }
 
 @keyframes xatSingleStarPass {
-    0% {
-        top: 25%;
-        left: -15%;
-        opacity: 0;
-        transform: scale(0.6);
-    }
-    12% {
-        opacity: 1;
-        transform: scale(1.4);
-    }
-    45% {
-        top: 55%;
-        left: 115%;
-        opacity: 0;
-        transform: scale(0.5);
-    }
-    100% {
-        top: 25%;
-        left: -15%;
-        opacity: 0;
-    }
+    0% { top: 25%; left: -15%; opacity: 0; transform: scale(0.6); }
+    12% { opacity: 1; transform: scale(1.4); }
+    45% { top: 55%; left: 115%; opacity: 0; transform: scale(0.5); }
+    100% { top: 25%; left: -15%; opacity: 0; }
 }
